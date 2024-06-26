@@ -32,7 +32,7 @@ namespace Foam
 {
 namespace Function2s
 {
-    makeScalarFunction2(binaryDiffusionCoefficientsPolynomial)
+    addScalarFunction2(binaryDiffusionCoefficientsPolynomial);
 }
 }
 
@@ -53,6 +53,7 @@ Foam::Function2s::binaryDiffusionCoefficientsPolynomial::binaryDiffusionCoeffici
 Foam::Function2s::binaryDiffusionCoefficientsPolynomial::binaryDiffusionCoefficientsPolynomial
 (
     const word& name,
+    const unitConversions& units,
     const dictionary& dict
 )
 :
@@ -63,7 +64,11 @@ Foam::Function2s::binaryDiffusionCoefficientsPolynomial::binaryDiffusionCoeffici
 
 // * * * * * * * * * * * * * * * Member Functions  * * * * * * * * * * * * * //
 
-void Foam::Function2s::binaryDiffusionCoefficientsPolynomial::write(Ostream& os) const
+void Foam::Function2s::binaryDiffusionCoefficientsPolynomial::write
+(
+    Ostream& os, 
+    const unitConversions& units
+) const
 {
     writeEntry(os, "polynomialCoeffs", polynomialCoeffs_);
 }
